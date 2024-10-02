@@ -5,7 +5,12 @@ const offerSlideBtnRight = document.querySelector('.offer-slide-btn.right');
 const offerSlideBtnLeft = document.querySelector('.offer-slide-btn.left');
 const dropdownBtnMobile = document.querySelector('#dropdown__btn-mobile');
 const mainMobileNav = document.querySelector('#main-mobile-nav');
+const skinMobileNav = document.querySelector('#skin-menu');
 const mobileMainNavCloseBtn = document.querySelectorAll('.mobile-main-nav__close-btn');
+const skinShowBtn = document.querySelector('#skin-show-btn');
+const returnBtn = document.querySelectorAll('.return-btn');
+
+
 // getComputedStyle(offerSlideBtnLeft).
 // offerSlideBtnLeft
 const sectionSlideBtnRight = document.querySelectorAll('.shop-base-class-section__btn.right');
@@ -205,6 +210,26 @@ sectionSlideBtnLeft.forEach(item=>{
 
 // ? /////////////////////////////////////////////////////////
 
+function showMenu(menu) {
+    mainMobileNav.classList.remove('show');
+    menu.style.visibility = "visible";
+    menu.classList.add('show');
+    setTimeout(()=>{
+        mainMobileNav.style.visibility = "hidden";
+    },500)
+}
+
+
+function returnMenu(hideMenu,menu) {
+    hideMenu.classList.remove('show');
+    menu.style.visibility = "visible";
+    menu.classList.add('show');
+    setTimeout(()=>{
+        hideMenu.style.visibility = "hidden";
+    },500)
+}
+
+
 dropdownBtnMobile.onclick = ()=> {
     mainMobileNav.style.visibility = "visible";
     mainMobileNav.classList.add('show');
@@ -223,3 +248,28 @@ mobileMainNavCloseBtn.onclick = ()=> {
     mainMobileNav.style.visibility = "visible";
     mainMobileNav.classList.add('show');
 }
+
+skinShowBtn.onclick = ()=> {
+    showMenu(skinMobileNav);
+    
+}
+
+returnBtn.forEach(item=>{
+    item.addEventListener('click',(e)=>{
+        // hideMenu 
+
+
+
+        let hideMenu = e.currentTarget.closest('.offcanvas');
+        console.log('hideMenu',hideMenu)
+        let level = hideMenu.dataset.level;
+        let menu = document.getElementById(level);
+
+        // console.log('hideMenu',hideMenu)
+        console.log('hideMenu',level)
+
+        console.log('menu',menu)
+
+        returnMenu(hideMenu,menu)
+    })
+})
