@@ -250,15 +250,13 @@ mobileMainNavCloseBtn.onclick = ()=> {
 }
 
 skinShowBtn.onclick = ()=> {
+    console.log('jhakjsdf')
     showMenu(skinMobileNav);
-    
 }
 
 returnBtn.forEach(item=>{
     item.addEventListener('click',(e)=>{
         // hideMenu 
-
-
 
         let hideMenu = e.currentTarget.closest('.offcanvas');
         console.log('hideMenu',hideMenu)
