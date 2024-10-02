@@ -3,7 +3,9 @@ const dropMenu = document.querySelector('#dropdown__menu-main');
 const offers = document.querySelectorAll('.offer-slide-container__item');
 const offerSlideBtnRight = document.querySelector('.offer-slide-btn.right');
 const offerSlideBtnLeft = document.querySelector('.offer-slide-btn.left');
-
+const dropdownBtnMobile = document.querySelector('#dropdown__btn-mobile');
+const mainMobileNav = document.querySelector('#main-mobile-nav');
+const mobileMainNavCloseBtn = document.querySelectorAll('.mobile-main-nav__close-btn');
 // getComputedStyle(offerSlideBtnLeft).
 // offerSlideBtnLeft
 const sectionSlideBtnRight = document.querySelectorAll('.shop-base-class-section__btn.right');
@@ -201,4 +203,23 @@ sectionSlideBtnLeft.forEach(item=>{
     });
 })
 
+// ? /////////////////////////////////////////////////////////
 
+dropdownBtnMobile.onclick = ()=> {
+    mainMobileNav.style.visibility = "visible";
+    mainMobileNav.classList.add('show');
+}
+// dropdownBtnMobile.closest
+mobileMainNavCloseBtn.forEach(item=>{
+    item.addEventListener('click',e=>{
+        e.currentTarget.closest('.offcanvas').classList.remove('show');
+
+        setTimeout(()=>{
+            e.currentTarget.closest('.offcanvas').style.visibility ='hidden';
+        },500)
+    })
+})
+mobileMainNavCloseBtn.onclick = ()=> {
+    mainMobileNav.style.visibility = "visible";
+    mainMobileNav.classList.add('show');
+}
